@@ -30,12 +30,13 @@ export default function Page() {
     }
   }, [router]);
 
-  const { data: userData, isFetching, isError } = useGetUserQuery(
-    userId ?? "",
-    {
-      skip: !userId || !token,
-    }
-  );
+  const {
+    data: userData,
+    isFetching,
+    isError,
+  } = useGetUserQuery(userId ?? "", {
+    skip: !userId || !token,
+  });
 
   const fullName = `${userData?.data?.first_name || ""} ${
     userData?.data?.last_name || ""
@@ -55,7 +56,6 @@ export default function Page() {
             display: "grid",
             placeContent: "center",
             width: "100%",
-            padding: "0 2rem",
             minHeight: "100vh",
             gap: 2,
           }}
@@ -63,6 +63,7 @@ export default function Page() {
           <Box
             sx={{
               maxWidth: "54rem",
+              width: "95%",
               marginInline: "auto",
               backgroundColor: "#F8F8F8",
             }}
@@ -93,14 +94,22 @@ export default function Page() {
                 />
               </Box>
               <Typography
-                sx={{ fontWeight: "bold", fontSize: "2rem" }}
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: { xs: "1.3rem", md: "2rem" },
+                }}
                 variant="h1"
               >
                 Welcome {fullName}
               </Typography>
-              <Typography variant="body1">Super Admin</Typography>
+              <Typography
+                variant="body1"
+                sx={{ fontSize: { xs: "0.8rem", md: "1.6rem" } }}
+              >
+                Super Admin
+              </Typography>
             </Box>
-            <Box sx={{ padding: "2rem 3rem" }}>
+            <Box sx={{ padding: { xs: "1rem 1.5rem", md: "2rem 3rem" } }}>
               <Typography variant="body1">
                 Korem ipsum dolor sit amet, consectetur adipiscing elit., Korem
                 ipsum dolor sit amet, consectetur adipiscing elit., Korem ipsum

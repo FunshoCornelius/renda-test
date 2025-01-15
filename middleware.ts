@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  // Get the pathname
   const path = request.nextUrl.pathname;
 
   const isPublicPath = path === "/login" || path === "/signup";
@@ -20,7 +19,6 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Specify which routes to run middleware on
 export const config = {
   matcher: [
     /*
